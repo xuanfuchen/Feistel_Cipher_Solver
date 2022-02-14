@@ -64,11 +64,22 @@ public class feistel_cipher {
         }
     	return reversedString;
     }
+
+    //this function prints out the corresponding ASCII letters base on the binary string
+    static void printASCII(ArrayList<String> arr) {
+    	int ASCII_code_1 = Integer.parseUnsignedInt(arr.get(0), 2);
+    	int ASCII_code_2 = Integer.parseUnsignedInt(arr.get(1), 2);
+    	
+    	System.out.print((char)ASCII_code_1);
+    	System.out.print((char)ASCII_code_2);
+    }
     
 	public static void main(String[] args) {
+		//key 1 & key 2
 		String k1 = "10010101";
 		String k2 = "11000001";
 		
+		//b1 b2 are the first two letters and b3 b4 are the last two letters
 		String b1 = "00100101";
 		String b2 = "00001010";
 		String b3 = "11001001";
@@ -77,7 +88,10 @@ public class feistel_cipher {
 		ArrayList<String> firstPart = feistel_decoder(k1, k2, b1, b2);
 		ArrayList<String> secondPart = feistel_decoder(k1, k2, b3, b4);
 		
-		System.out.println(firstPart);
+		System.out.print(firstPart);
 		System.out.println(secondPart);
+		
+		printASCII(firstPart);
+		printASCII(secondPart);
 	}
 }
